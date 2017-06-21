@@ -14,7 +14,6 @@ Feature: Check CLP functionality
       Scenario: CLP Sorting rules
         When User press on l1 link from menu
         When L1 page is displayed
-        Then check category name in breadcrumb
         Then check that Sort by drop-down is present
         And Change “Sort by” to “Price High to Low”
         Then Check that products are sorted correctly on the grid

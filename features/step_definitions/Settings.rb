@@ -15,8 +15,8 @@ Given(/^open the site$/) do
 
 if @br == :chrome
    desktopbrowser
-   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
-   @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+   @browser.goto 'https://storefront:loreal1@dev09-latam-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-Site/en_GB/Home-Show'
+   @browser.goto 'http://dev09-latam-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-Site/en_GB/Home-Show'
    end
 if @br == :ff
   desktopbrowser
@@ -66,6 +66,6 @@ end
 
 
 And(/^close the newsletter pop-up$/) do
-  @browser.element(:class, "js_newsletter_subscribe_content").wait_until_present.present?
+  @browser.element(:class, "dialog_content").wait_until_present.present?
   @browser.element(:class, "ui-dialog-titlebar-close").wait_until_present.click
 end

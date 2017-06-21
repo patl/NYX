@@ -1,5 +1,5 @@
 When(/^User do mouseover  on any category$/) do
-  @browser.element(:class, 'level_1_list_item').hover
+  @browser.element(:class, 'level_1_list_item_link').hover
 end
 
 Then(/^he should see subcategories$/) do
@@ -13,12 +13,11 @@ Then(/^press on any l2 category$/) do
 end
 
 When(/^l2 category is displayed$/) do
-  @browser.element(:class, 'refinement_header').text == (@l2_name)
-  p @l2_name
-end
+  @browser.element(:class, 'refinement_header').present?
+ end
 
 And(/^verify elements on l2$/) do
-  @browser.element(:class, 'plp_navigation_panel').visible?
+  @browser.element(:class, 'l-listing_page-results').visible?
 end
 
 And(/^press on Logo$/) do
@@ -28,7 +27,7 @@ end
 
 When(/^User press on l1 link from menu$/) do
   @l1_name = @browser.element(:class, 'menu_list_item_2').text
-  @browser.element(:class, 'menu_list_item_2').click
+  @browser.element(:class, 'menu_list_item_2').element(:class, 'level_1_list_item_link ').click
 end
 
 When(/^L1 page is displayed$/) do
@@ -43,12 +42,12 @@ end
 
 When(/^user do mousover on first product from grid$/) do
   @browser.element(:class, 'product_image_topwrapper').hover
-  @product_name = @browser.element(:class, 'action_product_block').element(:class, 'product_name').text
-end
+  @product_name = @product_name = @browser.element(:class, 'b-product_tile').element(:class, 'product_name').text
+  end
 
 Then(/^press on QV button$/) do
   #product_name = @browser.element(:class, 'product_name').text
-  @browser.element(:css, '.quickviewbutton>span').click
+  @browser.element(:class, 'quickviewbutton').click
 end
 
 And(/^user should see QV pop\-up displayed$/) do
@@ -60,8 +59,6 @@ And(/^verify elements on the QV pop\-up$/) do
   @browser.element(:class, 'js_pdpMain').element(:class, 'product_name').present?
   @product_name = @browser.element(:class, 'js_pdpMain').element(:class, 'product_name').text
   @browser.element(:class, 'js_pdpMain').element(:class, 'product_image').present?
-  @browser.element(:class, 'js_pdpMain').element(:id, 'quantitySelectBoxItText').present?
-  @qnt = @browser.element(:class, 'js_pdpMain').element(:id, 'quantitySelectBoxItText').text
   @browser.element(:class, 'js_pdpMain').element(:class, 'product_price').present?
   @product_price = @browser.element(:class, 'js_pdpMain').element(:class, 'product_price').text
 
@@ -105,12 +102,12 @@ end
 
 And(/^Change “Sort by” to “Price High to Low”$/) do
   @browser.element(:name, 'sort_by_list').click
-  @browser.element(:text, 'Price (high to low)').click
+  @browser.element(:text, 'Price (Low to High)').click
 end
 
 
 Then(/^Check that products are sorted correctly on the grid$/) do
-  sleep(3)
+  sleep(6)
   price = @browser.element(:class, 'search_result_items').elements(:class, 'product_price').map do |element|
   element.text
 end
@@ -168,7 +165,7 @@ Then(/^press on PDP button$/) do
 end
 
 And(/^user is redirected to PDP$/) do
-  (@browser.element(:id, 'pdpMain').element(:class, 'product_name').wait_until_present.text == @product_name) == true
+  @browser.element(:class, 'product_content').element(:class, 'product_name').wait_until_present.text == @product_name
 end
 
 Then(/^user changed other available options \(size\/color, etc\)$/) do
@@ -184,14 +181,11 @@ end
 And(/^verify elements on the PDP$/) do
   @browser.element(:class, 'main_image').present? == true
   @browser.element(:id, 'thumbnails').present? == true
-  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'product_name').present? == true
-  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'rating_container').present? == true
-  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'expand_section_wrapper').present? == true
-  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'variant_dropdown').present? == true
-  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'add_to_cart').present? == true
-  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'b-price').present? == true
-  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'product_actions').present? == true
-  @browser.element(:id, 'pdpMain').element(:class, 'description_benefits_section').present? == true
+  @browser.element(:class, 'product_content').element(:class, 'product_name').present? == true
+  @browser.element(:class, 'product_content').element(:class, 'bv-rating').present? == true
+  @browser.element(:class, 'product-content-wrapper').element(:class, 'find-store').present? == true
+  @browser.element(:class, 'product_content').element(:class, 'b-price').present? == true
+  @browser.element(:class, 'product_tabs').element(:class, 'product_detail_description').present? == true
 end
 
 And(/^user press on Add to Bag button on PDP$/) do
@@ -213,4 +207,8 @@ end
 
 And(/^user press on go to cart page from pop\-up$/) do
   @browser.element(:class, 'addedtocart_popup_link').click
+end
+
+When(/^user press on view products details link$/) do
+  @browser.element(:class, 'view-product_details').click
 end

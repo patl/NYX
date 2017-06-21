@@ -1,9 +1,9 @@
-When(/^user do mouseover on My account link form header$/) do
-  @browser.element(:class, 'account_navigation_link').hover
+When(/^User click on Signin Register link from header$/) do
+  @browser.element(:class, 'account_navigation_link').click
 end
 
-Then(/^he should see the Sign In pop-up$/) do
-@browser.element(:class, 'js_accountNavigation').wait_until_present
+Then(/^User is redirected to My account sign in  page$/) do
+@browser.element(:class, 'account_signin').wait_until_present
 end
 
 Then(/^press on Create an account button$/) do
