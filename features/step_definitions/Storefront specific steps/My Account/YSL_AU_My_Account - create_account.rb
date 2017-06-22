@@ -7,11 +7,11 @@ Then(/^User is redirected to My account sign in  page$/) do
 end
 
 Then(/^press on Create an account button$/) do
-  @browser.iframe(:class, 'login_iframe').link(:text, 'Create').click
+  @browser.element(:class, 'create_account_button').click
 end
 
 And(/^Verify that Create My Account page is displayed$/) do
-  @browser.element(:css, "h1").text == 'Create an Account'.upcase
+  @browser.element(:css, "h1").text == 'Create Account'.upcase
 end
 
 

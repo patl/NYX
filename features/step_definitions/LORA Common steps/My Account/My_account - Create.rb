@@ -29,7 +29,7 @@ And(/^fill confirm password (.*)$/) do |usernewpassword|
 end
 
 Then(/^press on Create your account button$/) do
-  @browser.element(:class, "submit_button").click
+  @browser.element(:name, "dwfrm_profile_confirm").click
 end
 
 When(/^user is created he should see Welcome message$/) do
@@ -49,5 +49,10 @@ And(/^fill birthday$/) do
 end
 
 And(/^fill Phone number$/) do
-  @browser.element(:id, 'dwfrm_profile_customer_phone').send_keys('0623123123')
+  @browser.element(:id, 'dwfrm_profile_customer_mobile').send_keys('0623123123')
+end
+
+
+And(/^check the checkbox Privacy$/) do
+  @browser.element(:class, 'formfield_accept_terms required').click
 end
