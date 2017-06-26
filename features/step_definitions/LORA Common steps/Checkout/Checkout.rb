@@ -158,3 +158,4 @@ And(/^user selects (.*)  for mobile$/) do |state|
   @browser.select_list(:id,"dwfrm_singleshipping_shippingAddress_addressFields_states_state").select state
 end
 
+

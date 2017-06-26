@@ -19,8 +19,8 @@ Feature: Check QV functionality
     And verify elements on the QV pop-up
     And user verify that Find a store button is displayed
     Examples:
-      |qnt|
-      |1|
+      |qnt|userlogin|userpassword|
+      |1|ogboiko@gmail.com|ogboiko123|
 
 
 

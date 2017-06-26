@@ -15,12 +15,12 @@ Given(/^open the site$/) do
 
 if @br == :chrome
    desktopbrowser
-   @browser.goto 'https://storefront:loreal1@dev09-latam-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-Site/en_GB/Home-Show'
-   @browser.goto 'http://dev09-latam-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-Site/en_GB/Home-Show'
+   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-apac-Site'
+   @browser.goto 'http://dev25-emea-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-apac-Site'
    end
 if @br == :ff
   desktopbrowser
-  @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+  @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-apac-Site'
   alert = @browser.alert.exists?
    if alert == true
      @browser.alert.ok
@@ -33,12 +33,12 @@ end
 if @br == :ie
   desktopbrowser
   IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\LORA\\features\\support\\authwibdow.exe")
-  @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+  @browser.goto 'http://dev25-emea-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-apac-Site'
 end
 
   if @br == :edge
     IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\LORA\\features\\support\\authwibdow.exe")
-    @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+    @browser.goto 'http://dev25-emea-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-apac-Site'
   end
 
 if @br == :mobile

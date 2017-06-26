@@ -6,7 +6,7 @@ Feature: Check PDP functionality
   Scenario: Add product to cart from CLP PDD
     When User press on l1 link from menu
     When L1 page is displayed
-    Then user selects any refinement
+   # Then user selects any refinement
     When user do mousover on first product from grid
     Then press on QV button
     When user press on view products details link

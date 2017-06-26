@@ -24,17 +24,14 @@ Then(/^Fill greeting Mr or Mrs or Miss$/) do
 end
 
 Then(/^he press on Connection button$/) do
-  @browser.iframe(:class, 'login_iframe').element(:name, 'dwfrm_login_login').click
+  @browser.element(:name, 'dwfrm_login_login').click
 end
 
 And(/^Verify validation message for login field$/) do
-  @browser.iframe(:class, 'login_iframe').span(:class , "error_message").text == "Please enter your email address"
+  @browser.element(:class , "f_error_message").text == "Please enter your email address"
 end
 
-And(/^verify validation message for password field$/) do
-  @browser.iframe(:class, 'login_iframe').element(:xpath , "//form[@id='dwfrm_login']/fieldset/div[2]/span").text == "Please enter your password"
-end
 
 Then(/^he press on forgot your password link$/) do
-  @browser.iframe(:class, 'login_iframe').a(:class, "password_reset").click
+  @browser.link(:class, "password_reset").click
 end

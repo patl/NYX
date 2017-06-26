@@ -1,5 +1,5 @@
-When(/^user is redirected to Password recovery page$/) do
-  @browser.element(:id, "account-passwordresetdialog-page").text
+When(/^Reset password popup is displayed$/) do
+  @browser.element(:id, "password_reset_dialog").wait_until_present.present? == true
 end
 
 Then(/^he fill field with email$/) do
@@ -31,4 +31,8 @@ When(/^user press on burger menu$/) do
 When(/^user close toolkit$/) do
   @browser.element(:class, 'cookie_banner_accept').wait_until_present.click
   @browser.iframe(:id, 'DW-SFToolkit').element(:id, 'dw-sf-control-close-button').click
+end
+
+And(/^press on close button$/) do
+  @browser.element(:class, 'display_close_button').click
 end
