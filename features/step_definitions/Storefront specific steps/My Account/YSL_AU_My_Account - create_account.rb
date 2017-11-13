@@ -33,5 +33,39 @@ end
 
 
 Then(/^he press on forgot your password link$/) do
-  @browser.link(:class, "password_reset").click
+  @browser.link(:class, 'password_reset').click
+end
+
+
+And(/^user fills first name with (.*)$/) do |firstname|
+ @browser.text_field(:id, "dwfrm_profile_customer_firstname").set(firstname)
+ end
+
+And(/^user fills last name with (.*)$/) do |lastname|
+  @browser.text_field(:id, "dwfrm_profile_customer_lastname").set(lastname)
+  end
+
+And(/^user fills mobile number on register page wit (.*)$/) do |mobile|
+  @browser.text_field(:id, "dwfrm_profile_customer_mobile").set(mobile)
+  end
+
+And(/^user fills email$/) do
+  @browser.text_field(:id, "dwfrm_profile_customer_email").set(@email+'@gmail.com')
+  
+end
+
+And(/^user fills postal code with (.*)$/) do |postcode|
+ @browser.text_field(:id, "dwfrm_profile_customer_postal").set(postcode)
+end
+
+And(/^user fills password$/) do
+  @browser.text_field(:id, "dwfrm_profile_login_password").set(@pass)
+end
+
+And(/^user fills confirm password$/) do
+  @browser.text_field(:id, "dwfrm_profile_login_passwordconfirm").set(@pass)
+end
+
+And(/^check the checkbox SMS$/) do
+  @browser.element(:class, 'formfield_add_to_email_list').element(:class, 'f_label_value').click
 end

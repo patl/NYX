@@ -1,6 +1,5 @@
 And(/^press on Logout$/) do
-  @browser.element(:class, 'authenticated_user').element(:class, 'logout_link').wait_until_present.click
-  sleep(6)
+  @browser.element(:class, 'account_navigation_list').element(:link_text, 'Sign Out'.upcase).click
   end
 
 

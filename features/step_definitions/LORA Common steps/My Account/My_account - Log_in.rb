@@ -36,3 +36,7 @@ end
 And(/^press on close button$/) do
   @browser.element(:class, 'display_close_button').click
 end
+
+Then(/^verify that user is logged in and welcome (.*) is displayed in header$/) do |firstname|
+  @browser.element(:class, 'user_name').text == firstname
+end

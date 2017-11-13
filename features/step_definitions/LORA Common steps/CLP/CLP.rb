@@ -41,6 +41,7 @@ end
 
 
 When(/^user do mousover on first product from grid$/) do
+  sleep (3)
   @browser.element(:class, 'product_image_topwrapper').hover
   @product_name = @product_name = @browser.element(:class, 'b-product_tile').element(:class, 'product_name').text
   end
@@ -51,15 +52,15 @@ Then(/^press on QV button$/) do
 end
 
 And(/^user should see QV pop\-up displayed$/) do
-  @browser.element(:id, 'QuickViewDialog').wait_until_present.visible?
+  @browser.element(:id, 'QuickViewDialog').wait_until_present.visible? == true
 end
 
 
 And(/^verify elements on the QV pop\-up$/) do
   @browser.element(:class, 'js_pdpMain').element(:class, 'product_name').present?
   @product_name = @browser.element(:class, 'js_pdpMain').element(:class, 'product_name').text
-  @browser.element(:class, 'js_pdpMain').element(:class, 'product_image').present?
-  @browser.element(:class, 'js_pdpMain').element(:class, 'product_price').present?
+  @browser.element(:class, 'js_pdpMain').element(:class, 'product_image').present? == true
+  @browser.element(:class, 'js_pdpMain').element(:class, 'product_price').present? == true
   @product_price = @browser.element(:class, 'js_pdpMain').element(:class, 'product_price').text
 
 end
@@ -97,23 +98,27 @@ Then(/^user should see empty mini-cart$/) do
 end
 
 Then(/^check that Sort by drop\-down is present$/) do
-  @browser.element(:name, 'sort_by_list').present? == true
+  @browser.element(:name, 'sort_by_list').present?
 end
 
 And(/^Change “Sort by” to “Price High to Low”$/) do
-  @browser.element(:name, 'sort_by_list').click
+  @browser.element(:name, 'sort_by_list').wait_until_present.click
+  sleep (2)
   @browser.element(:text, 'Price (Low to High)').click
-end
 
+end
 
 Then(/^Check that products are sorted correctly on the grid$/) do
-  sleep(6)
-  price = @browser.element(:class, 'search_result_items').elements(:class, 'product_price').map do |element|
-  element.text
+  sleep(5)
+  oldprice = @browser.element(:class, 'search_result_items').elements(:class, 'product_price').map do |element|
+    element.text
+
+  end
+  oldprice = oldprice.map { |word| word.gsub('A$', '') }.map!(&:to_i)
+    (oldprice == oldprice.sort).should == true
 end
-new = price
-new == price.sort{|a,b| a <=> a}
-end
+
+
 
 Then(/^user changed qnt to (.*)$/) do |qnt|
   @asd = qnt
@@ -212,3 +217,6 @@ end
 When(/^user press on view products details link$/) do
   @browser.element(:class, 'view-product_details').click
 end
+
+
+

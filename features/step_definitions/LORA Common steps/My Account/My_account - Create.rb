@@ -29,8 +29,9 @@ And(/^fill confirm password (.*)$/) do |usernewpassword|
 end
 
 Then(/^press on Create your account button$/) do
+  @browser.execute_script('javascript:window.scrollBy(0,100)')
   @browser.element(:name, "dwfrm_profile_confirm").click
-end
+  end
 
 When(/^user is created he should see Welcome message$/) do
  @browser.span(:class, "account_user_name").inner_html == 'Welcome' + " " + @name1
@@ -42,10 +43,10 @@ And(/^fill birthday$/) do
   @browser.element(:link, "02").click
   #fill mm
   @browser.element(:id, 'dwfrm_profile_customer_birthdayfields_monthSelectBoxItText').click
-  @browser.element(:id, 'dwfrm_profile_customer_birthdayfields_monthSelectBoxItOptions').element(:link, "03").click
+  @browser.element(:id, 'dwfrm_profile_customer_birthdayfields_monthSelectBoxItOptions').element(:link, "JANUARY").click
   #fill yy
   @browser.element(:id, 'dwfrm_profile_customer_birthdayfields_yearSelectBoxItText').click
-  @browser.element(:link, "2010").click
+  @browser.element(:link, "1991").click
 end
 
 And(/^fill Phone number$/) do
@@ -54,5 +55,5 @@ end
 
 
 And(/^check the checkbox Privacy$/) do
-  @browser.element(:class, 'formfield_accept_terms required').click
+  @browser.element(:class, 'formfield_accept_terms').click
 end
