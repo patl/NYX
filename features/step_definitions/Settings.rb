@@ -3,12 +3,24 @@ require 'watir'
 require 'watir-scroll'
 require 'parallel_tests'
 require 'rspec'
+require 'win32ole'
+
+
+def basic_auth
+  autoit = WIN32OLE.new("AutoItX3.Control")
+  autoit.WinActivate("Authentication Required", "")
+  autoit.Send('storefront')
+  autoit.Send("{TAB}")
+  autoit.Send('loreal1')
+  autoit.Send("{ENTER}")
+end
 
 Given(/^open the site$/) do
 
 @br = :chrome
-#@link = "http://www.nyxcosmetics.com.au"
-@link =  "http://storefront:loreal1@staging-apac-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-au-Site/en_AU/Default-Start"
+@link = "http://www.nyxcosmetics.com.au"
+#@link =  "https://staging-apac-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-au-Site"
+
   def desktopbrowser
     @browser = Watir::Browser.new @br
     @browser.cookies.clear
@@ -19,8 +31,9 @@ Given(/^open the site$/) do
 if @br == :chrome
   desktopbrowser
   @browser.goto @link
+  #basic_auth
+  end
 
-   end
 if @br == :firefox
   desktopbrowser
   @browser.goto @link

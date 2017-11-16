@@ -69,3 +69,8 @@ end
 And(/^check the checkbox SMS$/) do
   @browser.element(:class, 'formfield_add_to_email_list').element(:class, 'f_label_value').click
 end
+
+When(/^user press on FB icon$/) do
+  @browser.element(:class, 'dw-social-login').click
+end
+

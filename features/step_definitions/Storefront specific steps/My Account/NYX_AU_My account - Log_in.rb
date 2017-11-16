@@ -38,3 +38,16 @@ end
 Then(/^user verify the thank you pop\-up after email subscription$/) do
   @browser.element(:class, 'dialog_email_signup_promo').element(:class, 'newsletter_subscribe_confirm').wait_until_present
 end
+
+Then(/^he fills on FB page email (.*)$/) do |fbemail|
+  @browser.text_field(:id, 'email').set(fbemail)
+end
+
+Then(/^he fills on FB page pssword (.*)$/) do |fbpassword|
+  @browser.text_field(:id, 'pass').set(fbpassword)
+
+end
+
+Then(/^he press on Log In button from FB page$/) do
+  @browser.element(:id, 'loginbutton').click
+end
