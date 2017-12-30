@@ -4,9 +4,12 @@ require 'watir-scroll'
 require 'parallel_tests'
 require 'rspec'
 require 'win32ole'
-
+require 'chunky_png'
+require 'watir/extensions/element/screenshot'
+require 'imatcher'
 
 def basic_auth
+sleep (2)
   autoit = WIN32OLE.new("AutoItX3.Control")
   autoit.WinActivate("Authentication Required", "")
   autoit.Send('storefront')
@@ -19,7 +22,7 @@ Given(/^open the site$/) do
 
 @br = :chrome
 @link = "http://www.nyxcosmetics.com.au"
-#@link =  "https://staging-apac-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-au-Site"
+#@link =  "https://storefront:loreal1@staging-apac-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-au-Site"
 
   def desktopbrowser
     @browser = Watir::Browser.new @br
@@ -32,6 +35,8 @@ if @br == :chrome
   desktopbrowser
   @browser.goto @link
   #basic_auth
+  #sleep (3)
+  #@browser.goto @link
   end
 
 if @br == :firefox
