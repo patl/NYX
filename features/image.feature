@@ -10,4 +10,4 @@ Feature: Check Log in functionality
 
       Examples:
       |correctpage|element|expectedpath|
-      |            |header |C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\NYX\\uitest\\expected.png|
+      |           |header |C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\NYX\\uitest\\expected.png|

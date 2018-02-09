@@ -26,8 +26,8 @@ And(/^press on Logo$/) do
 end
 
 When(/^User press on l1 link from menu$/) do
-  @l1_name = @browser.element(:class, 'menu_list_item_2').text
-  @browser.element(:class, 'menu_list_item_2').element(:class, 'level_1_list_item_link ').click
+  @l1_name = @browser.element(:class, 'level_1_list_item_link').text
+  @browser.element(:class, 'level_1_list_item_link').click
 end
 
 When(/^L1 page is displayed$/) do

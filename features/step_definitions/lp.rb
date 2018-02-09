@@ -47,7 +47,7 @@ end
 
 When(/^user click on navigation arrows$/) do
   @browser.element(:class, 'nude_galleryPrev').click
-  @browser.element(:class, 'gallery_product ').present?.should == true
+  @browser.element(:class, 'gallery_product').present?.should == true
   end
 
 Then(/^user should see ARM SWATCHES section$/) do

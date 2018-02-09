@@ -16,13 +16,12 @@ sleep (2)
   autoit.Send("{TAB}")
   autoit.Send('loreal1')
   autoit.Send("{ENTER}")
-end
+end   #for base authorization ie - works so-so
 
 Given(/^open the site$/) do
 
 @br = :chrome
-@link = "http://www.nyxcosmetics.com.au"
-#@link =  "https://storefront:loreal1@staging-apac-loreal.demandware.net/on/demandware.store/Sites-nyxcosmetics-au-Site"
+@link = "http://www.nyxcosmetics.com.au/"
 
   def desktopbrowser
     @browser = Watir::Browser.new @br
@@ -34,10 +33,7 @@ Given(/^open the site$/) do
 if @br == :chrome
   desktopbrowser
   @browser.goto @link
-  #basic_auth
-  #sleep (3)
-  #@browser.goto @link
-  end
+end
 
 if @br == :firefox
   desktopbrowser
